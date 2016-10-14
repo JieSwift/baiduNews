@@ -2,12 +2,24 @@
  * @Author: HMJ
  * @Date:   2016-10-12 16:36:20
  * @Last Modified by:   HMJ
- * @Last Modified time: 2016-10-12 22:05:27
+ * @Last Modified time: 2016-10-14 22:47:32
  */
 $(document).ready(
     function() {
         var $tbody = $('#news-table tbody');
         refreshNews();
+        showHome();
+
+        function showHome(){
+            $('.addNews').click(function(event) {
+                $('.newsEdit').removeClass('hidden');
+                $('.newsContent').addClass('hidden');
+            });
+            $('.home').click(function(event) {
+                 $('.newsContent').removeClass('hidden');
+                $('.newsEdit').addClass('hidden');
+            });
+        }
 
         $('#submit-news')
             .click(
@@ -61,12 +73,12 @@ $(document).ready(
                         $.ajax({
                             url: './newsAddServlet',
                             type: 'post',
-                            dataType: 'json',
                             data: {
                                 'jsonNews': JSON
                                     .stringify(jsonNews)
                             },
-                            success: function() {
+                            dataType: 'json',
+                            success: function(data) {
                                 refreshNews();
                             }
                         });
@@ -105,30 +117,37 @@ $(document).ready(
             $.ajax({
                 url: './newsQueryByIdServlet',
                 type: 'get',
-                dataType: 'text',
+                dataType: 'json',
                 data: {
                     'newsId': updateId
                 },
                 success: function(data) {
-                    var obj = JSON.parse(data);
                     $('#unewsTitle').val(data.newsTitle);
                     $('#unewsType').val(data.newsType);
                     $('#unewsSrc').val(data.newsSrc);
                     $('#unewsImg').val(data.newsImg);
-                    // var utime = data[0].newsTime.split(' ')[0];
-                    // $('#unewsTime').val(utime);
+                    $('#unewsTime').val(data.newsTime);
                 }
             });
         });
-
+        //更新新闻
         $('#updateModal #confirmUpdate').click(function(e) {
             if (updateId) {
+                var ujsonNews = {
+                    newsTitle: $('#unewsTitle').val(),
+                    newsType: $('#unewsType').val(),
+                    newsSrc: $('#unewsSrc').val(),
+                    newsTime: $('#unewsTime').val(),
+                    newsImg: $('#unewsImg').val(),
+                    id: updateId
+                };
                 $.ajax({
                     url: './newsUpdateServlet',
-                    type: 'get',
+                    type: 'post',
                     dataType: 'json',
                     data: {
-                        'updateId': updateId
+                        'ujsonNews': JSON
+                            .stringify(ujsonNews)
                     },
                     success: function(data) {
                         $('#updateModal').modal('hide');

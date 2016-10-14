@@ -34,7 +34,7 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6 hidden newsEdit">
                 <div class="panel panel-default">
                     <div class="panel-heading">新闻编辑</div>
                     <div class="panel-body">
@@ -69,15 +69,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="newsImg">图片</label>
-                                <!--  <input type="text" class="form-control" id="newsImg" placeholder="请输入新闻图片">-->
-                                <input type="file" id="newsImg">
+                                <input type="text" class="form-control" id="newsImg" placeholder="请输入新闻图片">
+                                <!-- <input type="file" id="newsImg">-->
                             </div>
                             <button type="submit" class="btn btn-primary" id="submit-news">提交新闻</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6 newsContent">
                 <div class="panel panel-default">
                     <div class="panel-heading">新闻内容</div>
                     <div class="panel-body" id="table-wr">
@@ -127,17 +127,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">警告</h4>
+                    <h4 class="modal-title">更新</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form">
                         <div class="form-group">
-                            <label for="newsTitle">新闻标题</label>
-                            <input type="text" class="form-control" id="newsTitle" placeholder="请输入新闻标题">
+                            <label for="unewsTitle">新闻标题</label>
+                            <input type="text" class="form-control" id="unewsTitle" placeholder="请输入新闻标题">
                         </div>
                         <div class="form-group">
-                            <label for="newsType">新闻类型</label>
-                            <select class="form-control" id="newsType">
+                            <label for="unewsType">新闻类型</label>
+                            <select class="form-control" id="unewsType">
                                 <option>精选</option>
                                 <option>本地</option>
                                 <option>百家</option>
@@ -152,19 +152,18 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="newsSrc">新闻来源</label>
-                            <input type="text" class="form-control" id="newsSrc" placeholder="请输入新闻来源">
+                            <label for="unewsSrc">新闻来源</label>
+                            <input type="text" class="form-control" id="unewsSrc" placeholder="请输入新闻来源">
                         </div>
                         <div class="form-group">
-                            <label for="newsTime">新闻时间</label>
-                            <input type="date" class="form-control" id="newsTime">
+                            <label for="unewsTime">新闻时间</label>
+                            <input type="date" class="form-control" id="unewsTime">
                         </div>
                         <div class="form-group">
                             <label for="newsImg">图片</label>
-                            <!--  <input type="text" class="form-control" id="newsImg" placeholder="请输入新闻图片">-->
-                            <input type="file" id="newsImg">
+                            <input type="text" class="form-control" id="unewsImg" placeholder="请输入新闻图片">
+                            <!-- <input type="file" id="unewsImg">-->
                         </div>
-                        <button type="submit" class="btn btn-primary" id="submit-news">提交新闻</button>
                     </form>
                 </div>
                 <div class="modal-footer">
